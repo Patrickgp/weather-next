@@ -45,11 +45,11 @@ function currentWeather(city) {
       var date = new Date(
         response.list[(i + 1) * 8 - 1].dt * 1000
       ).toLocaleDateString();
-      var temp = response.list[(i + 1) * 8 - 1].main.temp;
+      var temp = response.list[(i + 1) * 8 - 5].main.temp_max; //using equation to display temperature at noon
       var humidity = response.list[(i + 1) * 8 - 1].main.humidity;
 
       $("#futureDate" + i).html(date);
-      $("#futureTemp" + i).html(temp + "&$8457");
+      $("#futureTemp" + i).html(temp + "&#8457");
       $("#futureHumidity" + i).html(humidity + "%");
     }
 
@@ -93,14 +93,23 @@ function UVIndex(lon, lat) {
   }).then(function (response) {
     console.log(response);
     $(currentUVIndex).html(response.current.uvi);
+    if (response.current.uvi <= 2) {
+      $(currentUVIndex).attr("class", "low");
+    } else if (response.current.uvi > 2 && response.current.uvi <= 5) {
+      $(currentUVIndex).attr("class", "moderate");
+    } else if (response.current.uvi > 5 && response.current.uvi <= 8) {
+      $(currentUVIndex).attr("class", "high");
+    } else {
+      $(currentUVIndex).attr("class", "danger");
+    }
   });
 }
 
 // Add city to search history
-function addToList(c) {
-  var listEl = $("<li>" + c.toUpperCase() + "</li>");
+function addToList(city) {
+  var listEl = $("<li>" + city.toUpperCase() + "</li>");
   $(listEl).attr("class", "list-group-item");
-  $(listEl).attr("data-value", c.toUpperCase());
+  $(listEl).attr("data-value", city.toUpperCase());
   $(".list-group").append(listEl);
 }
 
@@ -112,28 +121,6 @@ function pastSearch(event) {
     currentWeather(city);
   }
 }
-
-// Five Day Forecast
-// function forecast(city) {
-//   //   var dayover = false;
-//   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKey}&units=imperial`;
-//   $.ajax({
-//     url: queryURL,
-//     method: "GET",
-//   }).then(function (response) {
-//     for (i = 0; i < 5; i++) {
-//       var date = new Date(
-//         response.list[(i + 1) * 8 - 1].dt * 1000
-//       ).toLocaleDateString();
-//       var temp = response.list[(i + 1) * 8 - 1].main.temp;
-//       var humidity = response.list[(i + 1) * 8 - 1].main.humidity;
-
-//       $("#futureDate" + i).html(date);
-//       $("#futureTemp" + i).html(temp + "&$8457");
-//       $("#futureHumidity" + i).html(humidity + "%");
-//     }
-//   });
-// }
 
 // Start function
 function previousCity() {
