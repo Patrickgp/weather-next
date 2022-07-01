@@ -36,19 +36,129 @@ function displayWeather(event) {
 
 // AJAX Call
 function currentWeather(city) {
-  var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=imperial`;
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKey}&units=imperial`;
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response) {
+    for (i = 0; i < 5; i++) {
+      var date = new Date(
+        response.list[(i + 1) * 8 - 1].dt * 1000
+      ).toLocaleDateString();
+      var temp = response.list[(i + 1) * 8 - 1].main.temp;
+      var humidity = response.list[(i + 1) * 8 - 1].main.humidity;
+
+      $("#futureDate" + i).html(date);
+      $("#futureTemp" + i).html(temp + "&$8457");
+      $("#futureHumidity" + i).html(humidity + "%");
+    }
+
     console.log(response);
-    var date = new Date(response.dt * 1000).toLocaleDateString();
-    $(currentCity).html(response.name + "(" + date + ")");
-    var temp = response.main.temp;
+    var lat = response.city.coord.lat;
+    var lon = response.city.coord.lon;
+    var date = new Date(response.list[0].dt * 1000).toLocaleDateString();
+    $(currentCity).html(response.city.name + " (" + date + ")");
+    var temp = response.list[0].main.temp;
     $(currentTemperature).html(temp.toFixed(2) + "&#8457");
-    $(currentHumidity).html(response.main.humidity + "%");
-    var ws = response.wind.speed;
+    $(currentHumidity).html(response.list[0].main.humidity + "%");
+    var ws = response.list[0].wind.speed;
     var windSpeedMPH = (ws * 2.237).toFixed(1);
-    $(currentWindSpeed).html(windsmph + "MPH");
+    $(currentWindSpeed).html(windSpeedMPH + "MPH");
+    // forecast(response.city);
+    UVIndex(response.city.coord.lon, response.city.coord.lat);
+    if (response.ok) {
+      savedCities = JSON.parse(localStorage.getItem("cityname"));
+      console.log(savedCities);
+      if (savedCities == null) {
+        savedCities = [];
+        savedCities.push(city.toUpperCase());
+        localStorage.setItem("cityname", JSON.stringify(savedCities));
+        addToList(city);
+      } else {
+        if (find(city) > 0) {
+          savedCities.push(city.toUpperCase());
+          localStorage.setItem("cityname", JSON.stringify(savedCities));
+          addToList(city);
+        }
+      }
+    }
   });
 }
+
+function UVIndex(lon, lat) {
+  var UVIndexURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`;
+  $.ajax({
+    url: UVIndexURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    $(currentUVIndex).html(response.current.uvi);
+  });
+}
+
+// Add city to search history
+function addToList(c) {
+  var listEl = $("<li>" + c.toUpperCase() + "</li>");
+  $(listEl).attr("class", "list-group-item");
+  $(listEl).attr("data-value", c.toUpperCase());
+  $(".list-group").append(listEl);
+}
+
+// Display past search items
+function pastSearch(event) {
+  var liEl = event.target;
+  if (event.target.matches("li")) {
+    city = liEl.textContent.trim();
+    currentWeather(city);
+  }
+}
+
+// Five Day Forecast
+// function forecast(city) {
+//   //   var dayover = false;
+//   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKey}&units=imperial`;
+//   $.ajax({
+//     url: queryURL,
+//     method: "GET",
+//   }).then(function (response) {
+//     for (i = 0; i < 5; i++) {
+//       var date = new Date(
+//         response.list[(i + 1) * 8 - 1].dt * 1000
+//       ).toLocaleDateString();
+//       var temp = response.list[(i + 1) * 8 - 1].main.temp;
+//       var humidity = response.list[(i + 1) * 8 - 1].main.humidity;
+
+//       $("#futureDate" + i).html(date);
+//       $("#futureTemp" + i).html(temp + "&$8457");
+//       $("#futureHumidity" + i).html(humidity + "%");
+//     }
+//   });
+// }
+
+// Start function
+function previousCity() {
+  $("ul").empty();
+  var savedCities = JSON.parse(localStorage.getItem("cityname"));
+  if (savedCities !== null) {
+    savedCities = JSON.parse(localStorage.getItem("cityname"));
+    for (i = 0; i < savedCities.length; i++) {
+      addToList(savedCities[i]);
+    }
+    city = savedCities[i - 1];
+    currentWeather(city);
+  }
+}
+
+// Clear previous search history
+function clearHistory(event) {
+  event.preventDefault();
+  savedCities = [];
+  localStorage.removeItem("cityname");
+  document.location.reload();
+}
+
+// On Click Handlers
+$("#searchButton").on("click", displayWeather);
+$(document).on("click", pastSearch);
+$(window).on("load", previousCity);
+$("#clear-history").on("click", clearHistory);

@@ -28,9 +28,14 @@
         <div class="col-4">
           <h2>Search by City:</h2>
           <div class="inputgroup">
-            <input type="text" class="form" id="searchCity" />
+            <input
+              type="text"
+              class="form my-3"
+              id="searchCity"
+              placeholder="Enter City Name"
+            />
             <div class="input-group-append">
-              <button class="btn" id="searchButton">Search</button>
+              <button class="btn my-3" id="searchButton">Search</button>
             </div>
           </div>
           <button class="btn" type="button" id="clear-history">
@@ -41,32 +46,52 @@
         <div class="col-8">
           <div class="row">
             <div class="col-12" id="currentWeather">
-              <h3 id="currentCity">Avon, IN</h3>
-              <p>Temperature:<span class="current" id="temperature"></span></p>
-              <p>Humidity:<span class="current" id="humidity"></span></p>
-              <p>Wind Speed:<span class="current" id="windSpeed"></span></p>
-              <p>UV Index:<span class="current" id="uv-index"></span></p>
+              <h3 id="currentCity"></h3>
+              <p>Temperature: <span class="current" id="temperature"></span></p>
+              <p>Humidity: <span class="current" id="humidity"></span></p>
+              <p>Wind Speed: <span class="current" id="windSpeed"></span></p>
+              <p>UV Index: <span class="current" id="uv-index"></span></p>
             </div>
           </div>
           <div class="col-12" id="fiveDay">
             <h3>This is your 5-Day Forecast</h3>
             <div class="row">
-              <div class="col-2">
-                <p id="futureDate-0"></p>
-                <p id="futureIcon-0"></p>
-                <p><span id="futureTemp-0"></span></p>
-                <p><span id="futureHumidity-0"></span></p>
+              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+                <p id="futureDate0"></p>
+                <p id="futureIcon0"></p>
+                <p><span id="futureTemp0"></span></p>
+                <p><span id="futureHumidity0"></span></p>
+              </div>
+              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+                <p id="futureDate1"></p>
+                <p id="futureIcon1"></p>
+                <p><span id="futureTemp1"></span></p>
+                <p><span id="futureHumidity1"></span></p>
+              </div>
+              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+                <p id="futureDate2"></p>
+                <p id="futureIcon2"></p>
+                <p><span id="futureTemp2"></span></p>
+                <p><span id="futureHumidity2"></span></p>
+              </div>
+              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+                <p id="futureDate3"></p>
+                <p id="futureIcon3"></p>
+                <p><span id="futureTemp3"></span></p>
+                <p><span id="futureHumidity3"></span></p>
+              </div>
+              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+                <p id="futureDate4"></p>
+                <p id="futureIcon4"></p>
+                <p><span id="futureTemp4"></span></p>
+                <p><span id="futureHumidity4"></span></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
