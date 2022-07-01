@@ -43,11 +43,12 @@
           </button>
           <ul class="list-group"></ul>
         </div>
-        <div class="col-8">
+        <div class="col-1"></div>
+        <div class="col-7 mt-4">
           <div class="row">
-            <div class="col-12 display-all" id="currentWeather">
+            <div class="col-12 display-all ml-2" id="currentWeather">
               <h3
-                class="hud d-flex align-items-center justify-content-center"
+                class="hud d-flex align-items-center justify-content-center mb-3"
                 id="currentCity"
               ></h3>
               <p></p>
@@ -58,78 +59,78 @@
                 UV Index: <span class="current" id="uv-index"></span>
                 <div class="uv-rating">
                   <button
-                    style="background-color: green; height: 30px"
+                    style="background-color: #40DD1D; height: 30px"
                   >
                     low
                   </button>
                   <button style="background-color: yellow; height: 30px">
                     moderate
                   </button>
-                  <button style="background-color: orange; height: 30px">
+                  <button style="background-color: #de6449; height: 30px">
                     high
                   </button>
-                  <button style="background-color: red; height: 30px">
+                  <button style="background-color: #A30B37; height: 30px">
                     danger
                   </button>
                 </div>
               </p>
             </div>
           </div>
-          <div class="col-12 ml-4" id="fiveDay">
-            <h3 class="text-center my-3">This is your 5-Day Forecast</h3>
-            <div class="row">
-              <div
-                style="background-color: var(--primary-color);"
-                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
-              >
-                <p id="futureDate0"></p>
-                <p id="futureIcon0"></p>
-                <p><span id="futureTemp0"></span></p>
-                <p><span id="futureHumidity0"></span></p>
-                <p><span id="futureWindSpeed0"></span></p>
-              </div>
-              <div
-                style="background-color: var(--primary-color);"
-                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
-              >
-                <p id="futureDate1"></p>
-                <p id="futureIcon1"></p>
-                <p><span id="futureTemp1"></span></p>
-                <p><span id="futureHumidity1"></span></p>
-                <p><span id="futureWindSpeed1"></span></p>
-              </div>
-              <div
-                style="background-color: var(--primary-color);"
-                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
-              >
-                <p id="futureDate2"></p>
-                <p id="futureIcon2"></p>
-                <p><span id="futureTemp2"></span></p>
-                <p><span id="futureHumidity2"></span></p>
-                <p><span id="futureWindSpeed2"></span></p>
-              </div>
-              <div
-                style="background-color: var(--primary-color);"
-                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
-              >
-                <p id="futureDate3"></p>
-                <p id="futureIcon3"></p>
-                <p><span id="futureTemp3"></span></p>
-                <p><span id="futureHumidity3"></span></p>
-                <p><span id="futureWindSpeed3"></span></p>
-              </div>
-              <div
-                style="background-color: var(--primary-color);"
-                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
-              >
-                <p id="futureDate4"></p>
-                <p id="futureIcon4"></p>
-                <p><span id="futureTemp4"></span></p>
-                <p><span id="futureHumidity4"></span></p>
-                <p><span id="futureWindSpeed4"></span></p>
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 ml-4 my-5" id="fiveDay">
+      <h3 class="text-center my-3">This is your 5-Day Forecast</h3>
+      <div class="row d-flex align-items-center justify-content-center">
+        <div
+          style="background-color: var(--primary-color);"
+          class="col-2 d-flex flex-column align-items-center forecast rounded mx-1"
+        >
+          <p class="mt-3" id="futureDate0"></p>
+          <p id="futureIcon0"></p>
+          <p>Temp: <span id="futureTemp0"></span></p>
+          <p>Humidity: <span id="futureHumidity0"></span></p>
+          <p>Wind Speed: <span id="futureWindSpeed0"></span></p>
+        </div>
+        <div
+          style="background-color: var(--primary-color);"
+          class="col-2 d-flex flex-column align-items-center forecast rounded mx-1"
+        >
+          <p class="mt-3" id="futureDate1"></p>
+          <p id="futureIcon1"></p>
+          <p>Temp: <span id="futureTemp1"></span></p>
+          <p>Humidity: <span id="futureHumidity1"></span></p>
+          <p>Wind Speed: <span id="futureWindSpeed1"></span></p>
+        </div>
+        <div
+          style="background-color: var(--primary-color);"
+          class="col-2 d-flex flex-column align-items-center forecast rounded mx-1"
+        >
+          <p class="mt-3" id="futureDate2"></p>
+          <p id="futureIcon2"></p>
+          <p>Temp: <span id="futureTemp2"></span></p>
+          <p>Humidity: <span id="futureHumidity2"></span></p>
+          <p>Wind Speed: <span id="futureWindSpeed2"></span></p>
+        </div>
+        <div
+          style="background-color: var(--primary-color);"
+          class="col-2 d-flex flex-column align-items-center forecast rounded mx-1"
+        >
+          <p class="mt-3" id="futureDate3"></p>
+          <p id="futureIcon3"></p>
+          <p>Temp: <span id="futureTemp3"></span></p>
+          <p>Humidity: <span id="futureHumidity3"></span></p>
+          <p>Wind Speed: <span id="futureWindSpeed3"></span></p>
+        </div>
+        <div
+          style="background-color: var(--primary-color);"
+          class="col-2 d-flex flex-column align-items-center forecast rounded mx-1"
+        >
+          <p class="mt-3" id="futureDate4"></p>
+          <p id="futureIcon4"></p>
+          <p>Temp: <span id="futureTemp4"></span></p>
+          <p>Humidity: <span id="futureHumidity4"></span></p>
+          <p>Wind Speed: <span id="futureWindSpeed4"></span></p>
         </div>
       </div>
     </div>

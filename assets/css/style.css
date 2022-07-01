@@ -1,7 +1,7 @@
 :root {
-  --main-bg-color: white;
-  --secondary-bg-color: #344055;
-  --primary-color: #266dd3;
+  --main-bg-color: #f0fff1;
+  --primary-font-color: #5296a5;
+  --primary-color: #0a2e36;
   --secondary-color: #e88d67;
 }
 
@@ -16,6 +16,7 @@ body {
 h1 {
   display: block;
   color: var(--primary-color);
+  height: 75px;
 }
 
 h2 {
@@ -26,11 +27,16 @@ h3 {
   color: var(--primary-color);
 }
 
+p {
+  color: var(--primary-font-color);
+}
+
 .low {
-  background-color: green;
+  background-color: #40dd1d;
   padding: 0 5px;
   text-align: center;
   border-radius: 25px;
+  color: black;
 }
 
 .moderate {
@@ -38,26 +44,30 @@ h3 {
   padding: 0 5px;
   text-align: center;
   border-radius: 25px;
+  color: black;
 }
 
 .high {
-  background-color: orange;
+  background-color: #de6449;
   padding: 0 5px;
   text-align: center;
   border-radius: 25px;
+  color: black;
 }
 
 .danger {
-  background-color: red;
+  background-color: #a30b37;
   padding: 0 5px;
   text-align: center;
   border-radius: 25px;
+  color: black;
 }
 
 .hud {
   background-color: var(--secondary-color);
   border-radius: 25px;
   padding: 10px;
+  margin-top: -30px;
 }
 
 .display-all {
