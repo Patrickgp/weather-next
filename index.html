@@ -45,63 +45,88 @@
         </div>
         <div class="col-8">
           <div class="row">
-            <div class="col-12" id="currentWeather">
-              <h3 id="currentCity"></h3>
+            <div class="col-12 display-all" id="currentWeather">
+              <h3
+                class="hud d-flex align-items-center justify-content-center"
+                id="currentCity"
+              ></h3>
+              <p></p>
               <p>Temperature: <span class="current" id="temperature"></span></p>
               <p>Humidity: <span class="current" id="humidity"></span></p>
               <p>Wind Speed: <span class="current" id="windSpeed"></span></p>
               <p>
-                UV Index: <span class="current" id="uv-index"></span
-                ><button
-                  class="ml-5"
-                  style="background-color: green; height: 30px"
-                >
-                  low
-                </button>
-                <button style="background-color: yellow; height: 30px">
-                  moderate
-                </button>
-                <button style="background-color: orange; height: 30px">
-                  high
-                </button>
-                <button style="background-color: red; height: 30px">
-                  danger
-                </button>
+                UV Index: <span class="current" id="uv-index"></span>
+                <div class="uv-rating">
+                  <button
+                    style="background-color: green; height: 30px"
+                  >
+                    low
+                  </button>
+                  <button style="background-color: yellow; height: 30px">
+                    moderate
+                  </button>
+                  <button style="background-color: orange; height: 30px">
+                    high
+                  </button>
+                  <button style="background-color: red; height: 30px">
+                    danger
+                  </button>
+                </div>
               </p>
             </div>
           </div>
-          <div class="col-12" id="fiveDay">
-            <h3>This is your 5-Day Forecast</h3>
+          <div class="col-12 ml-4" id="fiveDay">
+            <h3 class="text-center my-3">This is your 5-Day Forecast</h3>
             <div class="row">
-              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+              <div
+                style="background-color: var(--primary-color);"
+                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
+              >
                 <p id="futureDate0"></p>
                 <p id="futureIcon0"></p>
                 <p><span id="futureTemp0"></span></p>
                 <p><span id="futureHumidity0"></span></p>
+                <p><span id="futureWindSpeed0"></span></p>
               </div>
-              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+              <div
+                style="background-color: var(--primary-color);"
+                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
+              >
                 <p id="futureDate1"></p>
                 <p id="futureIcon1"></p>
                 <p><span id="futureTemp1"></span></p>
                 <p><span id="futureHumidity1"></span></p>
+                <p><span id="futureWindSpeed1"></span></p>
               </div>
-              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+              <div
+                style="background-color: var(--primary-color);"
+                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
+              >
                 <p id="futureDate2"></p>
                 <p id="futureIcon2"></p>
                 <p><span id="futureTemp2"></span></p>
                 <p><span id="futureHumidity2"></span></p>
+                <p><span id="futureWindSpeed2"></span></p>
               </div>
-              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+              <div
+                style="background-color: var(--primary-color);"
+                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
+              >
                 <p id="futureDate3"></p>
                 <p id="futureIcon3"></p>
                 <p><span id="futureTemp3"></span></p>
                 <p><span id="futureHumidity3"></span></p>
+                <p><span id="futureWindSpeed3"></span></p>
               </div>
-              <div class="col-2 forecast rounded bg-primary ml-2 mr-2">
+              <div
+                style="background-color: var(--primary-color);"
+                class="col-2 d-flex flex-column align-items-center forecast rounded mx-2"
+              >
                 <p id="futureDate4"></p>
                 <p id="futureIcon4"></p>
                 <p><span id="futureTemp4"></span></p>
                 <p><span id="futureHumidity4"></span></p>
+                <p><span id="futureWindSpeed4"></span></p>
               </div>
             </div>
           </div>

@@ -47,17 +47,26 @@ function currentWeather(city) {
       ).toLocaleDateString();
       var temp = response.list[(i + 1) * 8 - 5].main.temp_max; //using equation to display temperature at noon
       var humidity = response.list[(i + 1) * 8 - 1].main.humidity;
+      var iconcode = response.list[(i + 1) * 8 - 1].weather[0].icon;
+      var iconurl = `http://openweathermap.org/img/wn/${iconcode}.png`;
+      var windSpeed = response.list[(i + 1) * 8 - 1].wind.speed;
 
       $("#futureDate" + i).html(date);
+      $("#futureIcon" + i).html("<img src=" + iconurl + ">");
       $("#futureTemp" + i).html(temp + "&#8457");
       $("#futureHumidity" + i).html(humidity + "%");
+      $("#futureWindSpeed" + i).html(windSpeed + "MPH");
     }
 
     console.log(response);
     var lat = response.city.coord.lat;
     var lon = response.city.coord.lon;
+    var weatherIcon = response.list[0].weather[0].icon;
+    var iconurl = `http://openweathermap.org/img/wn/${weatherIcon}.png`;
     var date = new Date(response.list[0].dt * 1000).toLocaleDateString();
-    $(currentCity).html(response.city.name + " (" + date + ")");
+    $(currentCity).html(
+      response.city.name + " (" + date + ")" + "<img src=" + iconurl + ">"
+    );
     var temp = response.list[0].main.temp;
     $(currentTemperature).html(temp.toFixed(2) + "&#8457");
     $(currentHumidity).html(response.list[0].main.humidity + "%");
@@ -66,9 +75,9 @@ function currentWeather(city) {
     $(currentWindSpeed).html(windSpeedMPH + "MPH");
     // forecast(response.city);
     UVIndex(response.city.coord.lon, response.city.coord.lat);
-    if (response.ok) {
+    if (response.cod == 200) {
       savedCities = JSON.parse(localStorage.getItem("cityname"));
-      console.log(savedCities);
+      //   console.log(savedCities);
       if (savedCities == null) {
         savedCities = [];
         savedCities.push(city.toUpperCase());

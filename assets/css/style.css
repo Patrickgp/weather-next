@@ -30,16 +30,42 @@ h3 {
   background-color: green;
   padding: 0 5px;
   text-align: center;
+  border-radius: 25px;
 }
 
 .moderate {
   background-color: yellow;
+  padding: 0 5px;
+  text-align: center;
+  border-radius: 25px;
 }
 
 .high {
   background-color: orange;
+  padding: 0 5px;
+  text-align: center;
+  border-radius: 25px;
 }
 
 .danger {
   background-color: red;
+  padding: 0 5px;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.hud {
+  background-color: var(--secondary-color);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.display-all {
+  background-color: var(--primary-color);
+  border-radius: 25px;
+  text-align: center;
+}
+
+.uv-rating {
+  margin-left: 20px;
 }
